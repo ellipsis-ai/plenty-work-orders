@@ -1,0 +1,8 @@
+{
+  "name" : "Work Orders",
+  "exportId" : "wUFITOFbStmNte8Dq3gHGw",
+  "icon" : "☑️",
+  "requiredAWSConfigs" : [ ],
+  "requiredOAuthApiConfigs" : [ ],
+  "requiredSimpleTokenApis" : [ ]
+}
