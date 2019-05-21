@@ -42,6 +42,9 @@ ${nextTaskSummary}`;
       }, {
         name: "remainingTaskData",
         value: JSON.stringify(remainingTasks.slice(1))
+      }, {
+        name: "notifyChannel",
+        value: notifyChannel
       }]
     }
   });
