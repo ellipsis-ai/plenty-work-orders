@@ -4,4 +4,10 @@
   "isRegex" : false,
   "caseSensitive" : false,
   "triggerType" : "MessageSent"
+}, {
+  "text" : "list open work orders for {maintenanceType} assigned to {assignedUsers}",
+  "requiresMention" : true,
+  "isRegex" : false,
+  "caseSensitive" : false,
+  "triggerType" : "MessageSent"
 } ]

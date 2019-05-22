@@ -1,6 +1,6 @@
 function(taskId, taskNumber, remainingTaskData, notifyChannel, hours, ellipsis) {
   const remainingTasks = JSON.parse(remainingTaskData);
-const ellipsisFiix = ellipsis.require('ellipsis-fiix@^0.1.0');
+const ellipsisFiix = ellipsis.require('ellipsis-fiix@^0.1.1');
 const workOrders = ellipsisFiix.workOrders(ellipsis);
 const users = ellipsisFiix.users(ellipsis);
 const EllipsisApi = require('ellipsis-api');
