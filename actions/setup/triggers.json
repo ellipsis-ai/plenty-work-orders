@@ -1,0 +1,13 @@
+[ {
+  "text" : "setup open work orders",
+  "requiresMention" : true,
+  "isRegex" : false,
+  "caseSensitive" : false,
+  "triggerType" : "MessageSent"
+}, {
+  "text" : "setup open work orders for {maintenanceType} assigned to {assignedUsers} running {recurrence} in {channel}",
+  "requiresMention" : true,
+  "isRegex" : false,
+  "caseSensitive" : false,
+  "triggerType" : "MessageSent"
+} ]

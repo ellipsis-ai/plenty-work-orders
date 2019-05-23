@@ -9,21 +9,35 @@ function workOrderTitle(wo, index) {
 workOrders.getOpen().then((allWorkOrders) => {
   const workOrders = allWorkOrders.filter((wo) => {
     const users = (wo.strAssignedUsers || "").split(",").map((ea) => ea.trim());
-    return users.some((ea) => ea.toLowerCase() === assignedUsers.toLowerCase()) &&
-      (wo.extraFields.dv_intMaintenanceTypeID || "").toLowerCase() === maintenanceType.toLowerCase()
+    const woMaintenanceType = wo.extraFields && wo.extraFields.dv_intMaintenanceTypeID || "";
+    const matchesUsers = assignedUsers.toLowerCase() === "all" ||
+      users.some((ea) => ea.toLowerCase() === assignedUsers.toLowerCase());
+    const matchesType = maintenanceType.toLowerCase() === "all" ||
+      woMaintenanceType.toLowerCase() === maintenanceType.toLowerCase();
+    return matchesUsers && matchesType;
   });
   if (workOrders.length === 0) {
     ellipsis.success(`
 ${greeting}
 
-There are no open work orders for ${maintenanceType} assigned to ${assignedUsers} at this moment. 🎉`);
+ 🎉 ${workOrderFilterDescription(maintenanceType, assignedUsers, 0)} at this moment. ${getScheduleInfo()}`);
     return;
   }
-  const workOrderSummary = workOrders.map((wo, index) => {
+  let matchingMaintenanceType = maintenanceType;
+  let matchingUsers = assignedUsers;
+  const numMatches = workOrders.length;
+  const first5 = workOrders.slice(0, 5);
+  const workOrderSummary = first5.map((wo, index) => {
     const woTitle = workOrderTitle(wo, index);
-    const maintenanceType = wo.extraFields.dv_intMaintenanceTypeID || "";
+    const woMaintenanceType = wo.extraFields.dv_intMaintenanceTypeID || "";
+    if (woMaintenanceType && maintenanceType.toLowerCase() !== "all") {
+      matchingMaintenanceType = woMaintenanceType;
+    }
+    if (wo.strAssignedUsers && assignedUsers.toLowerCase() !== "all") {
+      matchingUsers = wo.strAssignedUsers;
+    }
     const siteID = wo.extraFields.dv_intSiteID || "";
-    const details = [woTitle, maintenanceType, siteID]
+    const details = [woTitle, woMaintenanceType, siteID]
       .map((ea) => ea.trim())
       .filter((ea) => Boolean(ea))
       .join(" · ");
@@ -37,12 +51,13 @@ There are no open work orders for ${maintenanceType} assigned to ${assignedUsers
 ${asset}${description}${taskSummary}
 `
   }).join("\n\n");
-  const intro = workOrders.length === 1 ? "There is one open work order." :
-    `There are ${workOrders.length} open work orders.`;
+  const intro = `${workOrderFilterDescription(matchingMaintenanceType, matchingUsers, numMatches)}.${
+    numMatches > 5 ? " Here are the first 5:" : ""
+  }`;
   const result = `
 ${greeting}
 
-${intro}
+${intro} ${getScheduleInfo()}
 
 ${workOrderSummary}
 
@@ -69,5 +84,31 @@ ${workOrderSummary}
 
 function getChannelId() {
   return ellipsis.event.message && ellipsis.event.message.channel && ellipsis.event.message.channel.id;
+}
+
+function getScheduleInfo() {
+  if (ellipsis.event.schedule) {
+    return `_[⏰ Edit schedule](${ellipsis.event.schedule.editLink})_`;
+  } else {
+    return "";
+  }
+}
+
+function workOrderFilterDescription(maintenanceTypeFilter, assignedUsersFilter, count) {
+  let start;
+  if (count === 0) {
+    start = "There are no";
+  } else if (count === 1) {
+    start = "There is one";
+  } else {
+    start = `There are ${count}`;
+  }
+  return `${start} open ${
+    maintenanceTypeFilter.toLowerCase() === "all" ? "" : maintenanceTypeFilter + " "
+  }${
+    count === 1 ? "work order" : "work orders"
+  } assigned to ${
+    assignedUsersFilter.toLowerCase() === "all" ? "anyone" : assignedUsersFilter
+  }`;
 }
 }

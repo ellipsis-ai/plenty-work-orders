@@ -5,7 +5,17 @@
     "exportId" : "Text",
     "name" : "Text"
   },
-  "question" : "Which maintenance type should I search? e.g. Preventive Maintenance",
+  "question" : "Which maintenance type should I search? e.g. \"Preventive Maintenance\" or \"all\"",
+  "isSavedForTeam" : false,
+  "isSavedForUser" : false
+}, {
+  "exportId" : "8lT9XMJITtqAjIyAqD_7Ag",
+  "name" : "recurrence",
+  "paramType" : {
+    "exportId" : "Text",
+    "name" : "Text"
+  },
+  "question" : "When would you like the open work orders to be published? e.g. \"every weekday at 9 AM\"",
   "isSavedForTeam" : false,
   "isSavedForUser" : false
 }, {
@@ -35,7 +45,7 @@
     "exportId" : "Number",
     "name" : "Number"
   },
-  "question" : "How many hours did this task take to complete?",
+  "question" : "How many hours did this task take to complete? (Or say \"...stop\" to cancel.)",
   "isSavedForTeam" : false,
   "isSavedForUser" : false
 }, {
@@ -46,6 +56,16 @@
     "name" : "Text"
   },
   "question" : "What is the value for `notifyChannel`?",
+  "isSavedForTeam" : false,
+  "isSavedForUser" : false
+}, {
+  "exportId" : "Rd1DmBGqQyKbWW-cegRaVA",
+  "name" : "assignedUsers",
+  "paramType" : {
+    "exportId" : "Text",
+    "name" : "Text"
+  },
+  "question" : "Which assigned users would you like the bot to filter for? e.g. Farm Ops",
   "isSavedForTeam" : false,
   "isSavedForUser" : false
 }, {
@@ -79,13 +99,33 @@
   "isSavedForTeam" : false,
   "isSavedForUser" : false
 }, {
+  "exportId" : "g1gD1IUOR1Gv16fVUJsYuw",
+  "name" : "channel",
+  "paramType" : {
+    "exportId" : "Text",
+    "name" : "Text"
+  },
+  "question" : "Which channel would you like to list open work orders in?",
+  "isSavedForTeam" : false,
+  "isSavedForUser" : false
+}, {
   "exportId" : "lm4antTIQPKtcOfXJJHCJw",
   "name" : "assignedUsers",
   "paramType" : {
     "exportId" : "Text",
     "name" : "Text"
   },
-  "question" : "Which assigned users should I search? e.g. Farm Ops",
+  "question" : "Which assigned users should I search? e.g. \"Farm Ops\" or \"all\"",
+  "isSavedForTeam" : false,
+  "isSavedForUser" : false
+}, {
+  "exportId" : "pmcl1MwUTaaVgRHZFqrvsg",
+  "name" : "maintenanceType",
+  "paramType" : {
+    "exportId" : "Text",
+    "name" : "Text"
+  },
+  "question" : "Which maintenance type would you like the bot to filter for? e.g. Preventive Maintenance",
   "isSavedForTeam" : false,
   "isSavedForUser" : false
 } ]
