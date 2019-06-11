@@ -1,6 +1,6 @@
 function(assignedUsers, maintenanceType, ellipsis) {
   const greeting = require('ellipsis-random-response').greetingForTimeZone(ellipsis.team.timeZone);
-const workOrders = ellipsis.require('ellipsis-fiix@^0.1.1').workOrders(ellipsis);
+const workOrders = ellipsis.require('ellipsis-fiix@^0.2.0-beta').workOrders(ellipsis);
 
 function workOrderTitle(wo, index) {
   return `${index + 1}. WO ${wo.strCode}`;
@@ -10,30 +10,30 @@ workOrders.getOpen().then((allWorkOrders) => {
   const workOrders = allWorkOrders.filter((wo) => {
     const users = (wo.strAssignedUsers || "").split(",").map((ea) => ea.trim());
     const woMaintenanceType = wo.extraFields && wo.extraFields.dv_intMaintenanceTypeID || "";
-    const matchesUsers = assignedUsers.toLowerCase() === "all" ||
-      users.some((ea) => ea.toLowerCase() === assignedUsers.toLowerCase());
-    const matchesType = maintenanceType.toLowerCase() === "all" ||
-      woMaintenanceType.toLowerCase() === maintenanceType.toLowerCase();
+    const matchesUsers = assignedUsers.id === "all" ||
+      users.some((ea) => ea === assignedUsers.label);
+    const matchesType = maintenanceType.id === "all" ||
+      woMaintenanceType === maintenanceType.label;
     return matchesUsers && matchesType;
   });
+  let matchingMaintenanceType = maintenanceType.label;
+  let matchingUsers = assignedUsers.label;
   if (workOrders.length === 0) {
     ellipsis.success(`
 ${greeting}
 
- 🎉 ${workOrderFilterDescription(maintenanceType, assignedUsers, 0)} at this moment. ${getScheduleInfo()}`);
+ 🎉 ${workOrderFilterDescription(matchingMaintenanceType, matchingUsers, 0)} at this moment. ${getScheduleInfo()}`);
     return;
   }
-  let matchingMaintenanceType = maintenanceType;
-  let matchingUsers = assignedUsers;
   const numMatches = workOrders.length;
   const first5 = workOrders.slice(0, 5);
   const workOrderSummary = first5.map((wo, index) => {
     const woTitle = workOrderTitle(wo, index);
     const woMaintenanceType = wo.extraFields.dv_intMaintenanceTypeID || "";
-    if (woMaintenanceType && maintenanceType.toLowerCase() !== "all") {
+    if (woMaintenanceType && maintenanceType.id !== "all") {
       matchingMaintenanceType = woMaintenanceType;
     }
-    if (wo.strAssignedUsers && assignedUsers.toLowerCase() !== "all") {
+    if (wo.strAssignedUsers && assignedUsers.id !== "all") {
       matchingUsers = wo.strAssignedUsers;
     }
     const siteID = wo.extraFields.dv_intSiteID || "";
@@ -104,11 +104,11 @@ function workOrderFilterDescription(maintenanceTypeFilter, assignedUsersFilter, 
     start = `There are ${count}`;
   }
   return `${start} open ${
-    maintenanceTypeFilter.toLowerCase() === "all" ? "" : maintenanceTypeFilter + " "
+    maintenanceTypeFilter === "Any type" ? "" : maintenanceTypeFilter + " "
   }${
     count === 1 ? "work order" : "work orders"
   } assigned to ${
-    assignedUsersFilter.toLowerCase() === "all" ? "anyone" : assignedUsersFilter
+    assignedUsersFilter === "Any user" ? "anyone" : assignedUsersFilter
   }`;
 }
 }

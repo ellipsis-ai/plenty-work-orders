@@ -1,0 +1,12 @@
+{
+  "exportId" : "HwoQ0eMDRPetXTiPH901EA",
+  "name" : "MaintenanceType",
+  "responseTypeId" : "Normal",
+  "canBeMemoized" : false,
+  "isDataType" : true,
+  "isTest" : false,
+  "dataTypeConfig" : {
+    "fields" : [ ],
+    "usesCode" : true
+  }
+}

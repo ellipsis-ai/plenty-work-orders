@@ -2,10 +2,10 @@
   "exportId" : "4uzJkHdZRx-Rp4ZVvbQ7Jg",
   "name" : "maintenanceType",
   "paramType" : {
-    "exportId" : "Text",
-    "name" : "Text"
+    "exportId" : "HwoQ0eMDRPetXTiPH901EA",
+    "name" : "MaintenanceType"
   },
-  "question" : "Which maintenance type should I search? e.g. \"Preventive Maintenance\" or \"all\"",
+  "question" : "Which maintenance type should I search?",
   "isSavedForTeam" : false,
   "isSavedForUser" : false
 }, {
@@ -112,10 +112,10 @@
   "exportId" : "lm4antTIQPKtcOfXJJHCJw",
   "name" : "assignedUsers",
   "paramType" : {
-    "exportId" : "Text",
-    "name" : "Text"
+    "exportId" : "me1FHj3RRX2UDGPyNmNPvA",
+    "name" : "FiixUser"
   },
-  "question" : "Which assigned users should I search? e.g. \"Farm Ops\" or \"all\"",
+  "question" : "Which assigned user should I search?",
   "isSavedForTeam" : false,
   "isSavedForUser" : false
 }, {
