@@ -1,5 +1,5 @@
 function(workOrderId, notifyChannel, ellipsis) {
-  const ellipsisFiix = ellipsis.require('ellipsis-fiix@^0.1.1');
+  const ellipsisFiix = ellipsis.require('ellipsis-fiix@^0.2.0-beta');
 const moment = require('moment-timezone');
 const workOrders = ellipsisFiix.workOrders(ellipsis);
 
