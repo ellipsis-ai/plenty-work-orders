@@ -1,4 +1,14 @@
 [ {
+  "exportId" : "-aeWyLWYT0WSn-7D311NlQ",
+  "name" : "startIndex",
+  "paramType" : {
+    "exportId" : "Text",
+    "name" : "Text"
+  },
+  "question" : "What is the value for `startIndex`?",
+  "isSavedForTeam" : false,
+  "isSavedForUser" : false
+}, {
   "exportId" : "4uzJkHdZRx-Rp4ZVvbQ7Jg",
   "name" : "maintenanceType",
   "paramType" : {
@@ -49,6 +59,16 @@
   "isSavedForTeam" : false,
   "isSavedForUser" : false
 }, {
+  "exportId" : "H7CZKqsISo6ZQtWB-jVvgQ",
+  "name" : "workOrders",
+  "paramType" : {
+    "exportId" : "Text",
+    "name" : "Text"
+  },
+  "question" : "What is the value for `workOrders`?",
+  "isSavedForTeam" : false,
+  "isSavedForUser" : false
+}, {
   "exportId" : "HR0sNkB2TXiZ2R-g19wfNA",
   "name" : "notifyChannel",
   "paramType" : {
@@ -56,6 +76,26 @@
     "name" : "Text"
   },
   "question" : "What is the value for `notifyChannel`?",
+  "isSavedForTeam" : false,
+  "isSavedForUser" : false
+}, {
+  "exportId" : "JtrdGOTMQcahesVeGb4sRw",
+  "name" : "maintenanceType",
+  "paramType" : {
+    "exportId" : "Text",
+    "name" : "Text"
+  },
+  "question" : "What is the value for `maintenanceType`?",
+  "isSavedForTeam" : false,
+  "isSavedForUser" : false
+}, {
+  "exportId" : "Kqu0sLdrT3GDXbEc13M1nA",
+  "name" : "startIndex",
+  "paramType" : {
+    "exportId" : "Text",
+    "name" : "Text"
+  },
+  "question" : "What is the value for `startIndex`?",
   "isSavedForTeam" : false,
   "isSavedForUser" : false
 }, {
@@ -89,6 +129,36 @@
   "isSavedForTeam" : false,
   "isSavedForUser" : false
 }, {
+  "exportId" : "XjUdDNx9REm9FEk144pk1g",
+  "name" : "countRecurrence",
+  "paramType" : {
+    "exportId" : "Text",
+    "name" : "Text"
+  },
+  "question" : "When would you like a reminder about how many open work orders there are? e.g. \"every weekday at 4PM\" or \"never\"",
+  "isSavedForTeam" : false,
+  "isSavedForUser" : false
+}, {
+  "exportId" : "YpJlOBqTRK-IruT0CHXptw",
+  "name" : "assignedUsers",
+  "paramType" : {
+    "exportId" : "Text",
+    "name" : "Text"
+  },
+  "question" : "What is the value for `assignedUsers`?",
+  "isSavedForTeam" : false,
+  "isSavedForUser" : false
+}, {
+  "exportId" : "cbJEH_1wQqK2GtJI22kijg",
+  "name" : "assignedUsers",
+  "paramType" : {
+    "exportId" : "Text",
+    "name" : "Text"
+  },
+  "question" : "Which assigned users should I search? e.g. \"Farm Ops\" or \"all\"",
+  "isSavedForTeam" : false,
+  "isSavedForUser" : false
+}, {
   "exportId" : "ff5SK_-XQPmqEFA-pv1Gvg",
   "name" : "workOrderId",
   "paramType" : {
@@ -109,6 +179,26 @@
   "isSavedForTeam" : false,
   "isSavedForUser" : false
 }, {
+  "exportId" : "hKQhAD0sS2SYOIj2i5PLBQ",
+  "name" : "workOrders",
+  "paramType" : {
+    "exportId" : "Text",
+    "name" : "Text"
+  },
+  "question" : "What is the value for `workOrders`?",
+  "isSavedForTeam" : false,
+  "isSavedForUser" : false
+}, {
+  "exportId" : "k3CXmBUcRcez8qipnbh2kg",
+  "name" : "assignedUsers",
+  "paramType" : {
+    "exportId" : "Text",
+    "name" : "Text"
+  },
+  "question" : "What is the value for `assignedUsers`?",
+  "isSavedForTeam" : false,
+  "isSavedForUser" : false
+}, {
   "exportId" : "lm4antTIQPKtcOfXJJHCJw",
   "name" : "assignedUsers",
   "paramType" : {
@@ -126,6 +216,26 @@
     "name" : "Text"
   },
   "question" : "Which maintenance type would you like the bot to filter for? e.g. Preventive Maintenance",
+  "isSavedForTeam" : false,
+  "isSavedForUser" : false
+}, {
+  "exportId" : "tpRhZF6YTJq6jKHXZPkX9g",
+  "name" : "maintenanceType",
+  "paramType" : {
+    "exportId" : "Text",
+    "name" : "Text"
+  },
+  "question" : "What is the value for `maintenanceType`?",
+  "isSavedForTeam" : false,
+  "isSavedForUser" : false
+}, {
+  "exportId" : "zwMhLN2jQ9CCZ2VaBFlRaw",
+  "name" : "maintenanceType",
+  "paramType" : {
+    "exportId" : "Text",
+    "name" : "Text"
+  },
+  "question" : "Which maintenance type should I search? e.g. \"Preventive Maintenance\" or \"all\"",
   "isSavedForTeam" : false,
   "isSavedForUser" : false
 } ]
