@@ -1,4 +1,14 @@
 [ {
+  "exportId" : "-CdWAHgiSliLAi6DZG4Ymw",
+  "name" : "date",
+  "paramType" : {
+    "exportId" : "Text",
+    "name" : "Text"
+  },
+  "question" : "What is the value for `date`?",
+  "isSavedForTeam" : false,
+  "isSavedForUser" : false
+}, {
   "exportId" : "-aeWyLWYT0WSn-7D311NlQ",
   "name" : "startIndex",
   "paramType" : {
@@ -6,6 +16,16 @@
     "name" : "Text"
   },
   "question" : "What is the value for `startIndex`?",
+  "isSavedForTeam" : false,
+  "isSavedForUser" : false
+}, {
+  "exportId" : "2hqNgas3T6SS6UOIl3dvYw",
+  "name" : "date",
+  "paramType" : {
+    "exportId" : "Date & Time",
+    "name" : "Date & Time"
+  },
+  "question" : "Search for work orders opened on which date? e.g. \"Jan 1, 2019\" or \"today\"",
   "isSavedForTeam" : false,
   "isSavedForUser" : false
 }, {
@@ -99,6 +119,16 @@
   "isSavedForTeam" : false,
   "isSavedForUser" : false
 }, {
+  "exportId" : "LWBFSqBLQUKU0CbNWSFhnQ",
+  "name" : "date",
+  "paramType" : {
+    "exportId" : "Date & Time",
+    "name" : "Date & Time"
+  },
+  "question" : "Search for work orders opened on which date? e.g. \"Jan 1, 2019\" or \"today\"",
+  "isSavedForTeam" : false,
+  "isSavedForUser" : false
+}, {
   "exportId" : "Rd1DmBGqQyKbWW-cegRaVA",
   "name" : "assignedUsers",
   "paramType" : {
@@ -189,6 +219,16 @@
   "isSavedForTeam" : false,
   "isSavedForUser" : false
 }, {
+  "exportId" : "hN8BPYZwToWopqi9bWSeyg",
+  "name" : "date",
+  "paramType" : {
+    "exportId" : "Text",
+    "name" : "Text"
+  },
+  "question" : "Search for work orders opened on which date? e.g. \"today\" to always use the current date",
+  "isSavedForTeam" : false,
+  "isSavedForUser" : false
+}, {
   "exportId" : "k3CXmBUcRcez8qipnbh2kg",
   "name" : "assignedUsers",
   "paramType" : {
@@ -216,6 +256,16 @@
     "name" : "Text"
   },
   "question" : "Which maintenance type would you like the bot to filter for? e.g. Preventive Maintenance",
+  "isSavedForTeam" : false,
+  "isSavedForUser" : false
+}, {
+  "exportId" : "q15jpHiNT_WYxS5GHh4wGQ",
+  "name" : "date",
+  "paramType" : {
+    "exportId" : "Text",
+    "name" : "Text"
+  },
+  "question" : "What is the value for `date`?",
   "isSavedForTeam" : false,
   "isSavedForUser" : false
 }, {
