@@ -1,8 +1,17 @@
-function(assignedUsers, maintenanceType, channel, recurrence, countRecurrence, ellipsis) {
+function(assignedUsers, maintenanceType, date, channel, recurrence, countRecurrence, ellipsis) {
   const EllipsisApi = require('ellipsis-api');
 const moment = require('moment-timezone');
 const actions = new EllipsisApi(ellipsis).actions;
-
+const args = [{
+  name: "assignedUsers",
+  value: assignedUsers
+}, {
+  name: "maintenanceType",
+  value: maintenanceType
+}, {
+  name: "date",
+  value: date
+}];
 actions.unschedule({
   actionName: "List open work orders",
   channel: channel
@@ -13,13 +22,7 @@ actions.unschedule({
   actionName: "List open work orders",
   channel: channel,
   recurrence: recurrence,
-  args: [{
-    name: "assignedUsers",
-    value: assignedUsers
-  }, {
-    name: "maintenanceType",
-    value: maintenanceType
-  }]
+  args: args
 })).then((listResult) => {
   if (countRecurrence.toLowerCase() === "never") {
     return Promise.resolve({
@@ -30,13 +33,7 @@ actions.unschedule({
       actionName: "Count open work orders",
       channel: channel,
       recurrence: countRecurrence,
-      args: [{
-        name: "assignedUsers",
-        value: assignedUsers
-      }, {
-        name: "maintenanceType",
-        value: maintenanceType
-      }]
+      args: args
     }).then((countResult) => {
       return Promise.resolve({
         list: listResult,
@@ -47,7 +44,7 @@ actions.unschedule({
 }).then((results) => {
   const firstRun = moment.tz(results.list.scheduled.firstRecurrence, ellipsis.team.timeZone).format("LLLL z");
   const listSummary = `
-OK, I will report open work orders for ${maintenanceType} assigned to ${assignedUsers} in the ${channel} channel, ${results.list.scheduled.recurrence}.
+OK, I will report open work orders for ${maintenanceType} assigned to ${assignedUsers} opened ${date} in the ${channel} channel, ${results.list.scheduled.recurrence}.
 
 The first run will be ${firstRun}.`;
   const countSummary = results.count ? `
