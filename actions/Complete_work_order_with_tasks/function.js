@@ -1,5 +1,5 @@
 function(workOrderId, notifyChannel, ellipsis) {
-  const ellipsisFiix = ellipsis.require('ellipsis-fiix@^0.1.1');
+  const ellipsisFiix = require('EllipsisFiixLoader')(ellipsis);
 const moment = require('moment-timezone');
 const workOrders = ellipsisFiix.workOrders(ellipsis);
 
@@ -18,6 +18,7 @@ workOrders.getCompletedStatusId().then((completedID) => {
 function beginWorkOrderCompletion(wo) {
   return workOrders.getTasksFor(workOrderId).then((tasks) => {
     const firstTask = tasks[0];
+    const createdDate = moment.tz(wo.dtmDateCreated, ellipsis.team.timeZone).format("M/D/YYYY");
     const woTitle = `Work order ${wo.strCode}`;
     const maintenanceType = wo.extraFields.dv_intMaintenanceTypeID || "";
     const siteID = wo.extraFields.dv_intSiteID || "";
@@ -31,7 +32,7 @@ function beginWorkOrderCompletion(wo) {
     const firstTaskDescription = tasks.length === 1 ? (`• ${firstTask.strDescription}` || "") : 
       `Task 1: ${firstTask.strDescription || "(no description available)"}`;
     ellipsis.success(`
-You have chosen to mark work order ${wo.strCode} complete.
+You have chosen to mark ${woTitle} (opened ${createdDate}) complete.
 
 **${details}**
 ${asset}
@@ -55,6 +56,9 @@ ${firstTaskDescription}
         }, {
           name: "notifyChannel",
           value: notifyChannel
+        }, {
+          name: "previousNotes",
+          value: ""
         }]
       }
     });
