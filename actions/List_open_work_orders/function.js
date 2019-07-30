@@ -1,3 +1,3 @@
-function(assignedUsers, maintenanceType, ellipsis) {
-  require("ListOpenWorkOrders")(ellipsis, assignedUsers, maintenanceType, 0);
+function(assignedUsers, maintenanceType, date, ellipsis) {
+  require("ListOpenWorkOrders")(ellipsis, assignedUsers, maintenanceType, date, 0);
 }

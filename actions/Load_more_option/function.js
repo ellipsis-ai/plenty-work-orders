@@ -1,4 +1,4 @@
-function(workOrders, assignedUsers, maintenanceType, startIndex, ellipsis) {
+function(workOrders, assignedUsers, maintenanceType, date, startIndex, ellipsis) {
   const workOrderData = JSON.parse(workOrders);
 const numBatches = Math.ceil(workOrderData.length / 5);
 const batchNumber = Math.floor(Number.parseInt(startIndex, 10) / 5) + 1;
@@ -17,6 +17,9 @@ ellipsis.success("", {
     }, {
       name: "maintenanceType",
       value: maintenanceType
+    }, {
+      name: "date",
+      value: date
     }, {
       name: "startIndex",
       value: startIndex

@@ -1,18 +1,19 @@
-function(taskId, taskNumber, remainingTaskData, notifyChannel, hours, ellipsis) {
+function(taskId, taskNumber, remainingTaskData, notifyChannel, previousNotes, hours, notes, ellipsis) {
   const remainingTasks = JSON.parse(remainingTaskData);
-const ellipsisFiix = ellipsis.require('ellipsis-fiix@^0.1.1');
+const ellipsisFiix = require('EllipsisFiixLoader')(ellipsis);
 const workOrders = ellipsisFiix.workOrders(ellipsis);
 const users = ellipsisFiix.users(ellipsis);
 const EllipsisApi = require('ellipsis-api');
 const actionsApi = new EllipsisApi(ellipsis);
-
+const optionalNotes = notes.toLowerCase() === "none" ? "" : notes;
+const finalNotes = previousNotes ? previousNotes + "\n" + optionalNotes : optionalNotes;
 users.userIdForEmail(ellipsis.event.user.email).then((userId) => {
-  return workOrders.completeTask(taskId, userId, hours).then((updatedTask) => {
+  return workOrders.completeTask(taskId, userId, hours, optionalNotes).then((updatedTask) => {
     if (remainingTasks.length > 0) {
       return finishRemainingTasks();
     } else {
       return workOrders.getCompletedStatusId().then((newStatusId) => {
-        return workOrders.complete(updatedTask.intWorkOrderID, newStatusId, userId).then((updatedWorkOrder) => {
+        return workOrders.complete(updatedTask.intWorkOrderID, newStatusId, userId, finalNotes).then((updatedWorkOrder) => {
           return workOrderCompleted(updatedWorkOrder);
         });
       })
@@ -45,6 +46,9 @@ ${nextTaskSummary}`;
       }, {
         name: "notifyChannel",
         value: notifyChannel
+      }, {
+        name: "previousNotes",
+        value: finalNotes
       }]
     }
   });
